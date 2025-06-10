@@ -1,0 +1,32 @@
+digicode:
+  homeassistant:
+    customize:
+      input_text.digicode_log:
+        friendly_name: Dernier utilisateur
+      input_text.digicode_lastcode:
+        friendly_name: Dernier code scanné
+
+  input_text:
+    digicode_log:
+      max: 30
+    digicode_lastcode:
+      max: 20
+      
+  shell_command:
+    digicode_check: "python3 /config/scripts/digicode_check.py {{ code }} {{ type }}"
+
+  automation:
+    - alias: Digicode - Vérifie le code via script Python
+      trigger:
+        - platform: mqtt
+          topic: "rfid/event"
+      variables:
+        payload: "{{ trigger.payload_json }}"
+        code: "{{ payload.code }}"
+        type: "{{ payload.type }}"
+      action:
+        - service: shell_command.digicode_check
+          data:
+            code: "{{ code }}"
+            type: "{{ type }}"
+            

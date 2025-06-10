@@ -1,0 +1,117 @@
+rfidwiegand:
+  mqtt:
+    sensor:
+      - name: "RFID status"
+        unique_id: clavier_rfid_status
+        state_topic: "rfid/status"
+        icon: mdi:lan-connect
+
+      - name: "Dernier évenement"
+        unique_id: clavier_rfid_last_event
+        state_topic: "rfid/event"
+        icon: mdi:card-account-details
+
+      - name: "Code RFID"
+        unique_id: clavier_rfid_code
+        state_topic: "rfid/event"
+        value_template: "{{ value_json.code }}"
+        icon: mdi:card-account-details
+
+      - name: "Type RFID"
+        unique_id: clavier_rfid_type
+        state_topic: "rfid/event"
+        value_template: "{{ value_json.type }}"
+        icon: mdi:card-account-details
+
+      - name: "Entrée RFID"
+        unique_id: clavier_rfid_input
+        state_topic: "rfid/input"
+        icon: mdi:login-variant
+        
+      - name: "ok entrée RFID"
+        unique_id: rfid_access_ok
+        state_topic: "rfid/ok"
+        icon: mdi:login-variant
+    
+      - name: "Nok entrée RFID"
+        unique_id: rfid_access_nok
+        state_topic: "rfid_nok"
+        icon: mdi:login-variant
+
+    switch:
+      - name: "Relais 1 RFID"
+        unique_id: clavier_rfid_relay1
+        state_topic: "rfid/portail"
+        command_topic: "rfid/portail"
+        payload_on: 1
+        payload_off: 0
+        state_on: 1
+        state_off: 0
+        optimistic: true
+        icon: mdi:electric-switch
+
+      - name: "Relais 2 RFID - LED"
+        unique_id: clavier_rfid_relay2_led
+        state_topic: "rfid/ledclavier"
+        command_topic: "rfid/ledclavier"
+        payload_on: 1 # Vert
+        payload_off: 0 # Rouge
+        state_on: 1
+        state_off: 0
+        optimistic: true
+        icon: mdi:electric-switch
+
+      - name: "Relais 3 RFID - Buzzer"
+        unique_id: clavier_rfid_relay3_buzzer
+        state_topic: "rfid/buzzer"
+        command_topic: "rfid/buzzer"
+        payload_on: 1
+        payload_off: 0
+        state_on: 1
+        state_off: 0
+        optimistic: true
+        icon: mdi:bell
+
+      - name: "Relais 4 RFID"
+        unique_id: clavier_rfid_relay4
+        state_topic: "rfid/relay4"
+        command_topic: "rfid/relay4"
+        payload_on: 1
+        payload_off: 0
+        state_on: 1
+        state_off: 0
+        optimistic: true
+        icon: mdi:electric-switch
+
+      - name: "Pulse Porte RFID"
+        unique_id: clavier_rfid_pulse1
+        state_topic: "rfid/pulseporte"
+        command_topic: "rfid/pulseporte"
+        payload_on: 1
+        payload_off: 0
+        state_on: 1
+        state_off: 0
+        optimistic: true
+        icon: mdi:flash
+
+      - name: "Pulse LED RFID"
+        unique_id: clavier_rfid_pulse2
+        state_topic: "rfid/pulseled"
+        command_topic: "rfid/pulseled"
+        payload_on: 1
+        payload_off: 0
+        state_on: 1
+        state_off: 0
+        optimistic: true
+        icon: mdi:flash
+
+      - name: "Lumière RFID"
+        unique_id: clavier_rfid_light
+        state_topic: "rfid/light"
+        command_topic: "rfid/light"
+        payload_on: 1
+        payload_off: 0
+        state_on: 1
+        state_off: 0
+        optimistic: true
+        icon: mdi:lightbulb
