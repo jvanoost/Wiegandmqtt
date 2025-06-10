@@ -130,7 +130,8 @@ rfidwiegand:
         optimistic: true
         icon: mdi:lightbulb
 ```
-
+Ce package permet de récupérer les données du digicode en mqtt.
+![ha param](./img/rfidMqtt.jpg)
 # Fichier de configuration des utilisateurs 
 ```yaml=
 user1:
@@ -266,3 +267,5 @@ digicode:
             type: "{{ type }}"
             
 ```
+Une fois toutes les infos récupérées, on peut les afficher dans HA.
+![last access](./img/digicode-lastAccess.jpg)
